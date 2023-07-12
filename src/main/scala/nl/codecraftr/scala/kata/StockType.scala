@@ -1,6 +1,6 @@
 package nl.codecraftr.scala.kata
 
-trait StockType
+sealed trait StockType
 
 case object Petroleum extends StockType
 case object Gold extends StockType

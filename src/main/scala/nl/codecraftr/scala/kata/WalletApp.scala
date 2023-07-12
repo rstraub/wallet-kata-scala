@@ -1,5 +1,5 @@
 package nl.codecraftr.scala.kata
 
-object Main extends App {
+object WalletApp extends App {
   println("Wallet Kata")
 }
