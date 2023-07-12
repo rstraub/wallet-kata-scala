@@ -1,9 +1,7 @@
 package nl.codecraftr.scala.kata
 
-import nl.codecraftr.scala.kata.Wallet.calculateTotalValue
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
-import org.scalatest.wordspec.AnyWordSpec
 
 class WalletAppSpec extends AnyFlatSpec with Matchers {
   "wallet" should "calculate total value of its stocks" in {
@@ -13,6 +11,15 @@ class WalletAppSpec extends AnyFlatSpec with Matchers {
       Stock(3, Gold)
     )
 
-//    calculateTotalValue(wallet, ) shouldBe (1 + 2 + 3) * 2.0
+    val rateProvider = (stockType: StockType) =>
+      stockType match {
+        case Petroleum => 5.0
+        case Dollar    => 1.0
+        case Gold      => 10.0
+      }
+
+    WalletApp.calculateTotalValue(wallet, rateProvider) shouldBe (
+      5.0 + (1.0 * 2) + (10.0 * 3)
+    )
   }
 }
