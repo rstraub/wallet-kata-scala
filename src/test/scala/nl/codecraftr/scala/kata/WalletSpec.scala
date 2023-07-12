@@ -5,18 +5,9 @@ import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 import org.scalatestplus.mockito.MockitoSugar
 
-class CanarySpec
-    extends AnyWordSpec
-    with Matchers
-    with MockitoSugar
-    with BeforeAndAfter {
-
-  before {
-    println("fires before every test")
-  }
-
-  "canary" should {
-    "run tests" in {
+class WalletSpec extends AnyWordSpec with Matchers {
+  "wallet" should {
+    "return total value" in {
       true shouldBe true
     }
   }
