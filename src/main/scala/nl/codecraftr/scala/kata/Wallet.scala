@@ -1,15 +1,22 @@
 package nl.codecraftr.scala.kata
 
-case class Wallet(stocks: Set[Stock]) {}
+case class Wallet(stocks: Map[StockType, Int]) {}
 
 object Wallet {
-  def apply(stocks: Stock*): Wallet = Wallet(stocks.toSet)
+  def apply(stocks: Stock*): Wallet = {
+    val stocksMap = stocks
+      .groupBy(_.stockType)
+      .map { case (stockType, stocks) =>
+        stockType -> stocks.map(_.amount).sum
+      }
+    new Wallet(stocksMap)
+  }
 
   def calculateTotalValue(
       wallet: Wallet,
       rates: Map[StockType, Double]
   ): Double =
-    wallet.stocks
-      .map(stock => stock.amount * rates.getOrElse(stock.stockType, 0.0))
-      .sum
+    wallet.stocks.map { case (stockType, amount) =>
+      amount * rates.getOrElse(stockType, 0.0)
+    }.sum
 }
