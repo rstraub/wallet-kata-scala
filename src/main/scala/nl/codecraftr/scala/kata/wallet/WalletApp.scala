@@ -1,6 +1,6 @@
 package nl.codecraftr.scala.kata.wallet
 
-import LoggingProvider.withLogging
+import nl.codecraftr.scala.kata.wallet.utils.LoggingProvider.withLogging
 
 object WalletApp extends App {
   private lazy val loggingApiRateProvider = withLogging("Api")(

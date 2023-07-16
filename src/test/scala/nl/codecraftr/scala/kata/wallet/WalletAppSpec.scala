@@ -1,6 +1,7 @@
 package nl.codecraftr.scala.kata.wallet
 
-import LoggingProvider.withLogging
+import nl.codecraftr.scala.kata.wallet.utils.LoggingProvider.withLogging
+import nl.codecraftr.scala.kata.wallet.utils.TimingProvider.withTiming
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
@@ -23,7 +24,7 @@ class WalletAppSpec extends AnyFlatSpec with Matchers {
   it should "calculate total value of its stocks (API)" in {
     WalletApp.calculateTotalValue(
       wallet,
-      withLogging("api")(ApiRateProvider.rateProvider)
+      withTiming(withLogging("api")(ApiRateProvider.rateProvider))
     ) should be > 0.0
   }
 }
