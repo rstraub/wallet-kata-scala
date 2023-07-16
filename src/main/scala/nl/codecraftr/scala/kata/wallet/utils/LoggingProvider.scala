@@ -10,9 +10,9 @@ object LoggingProvider {
       source: String
   )(rateProvider: StockType => Double): StockType => Double = {
     val wrapped = (stockType: StockType) => {
-      println(s"Getting rates from $source")
+      println(s"Getting rates for $stockType from $source")
       val result = rateProvider(stockType)
-      println(s"Got rates from $source")
+      println(s"Got rates for $stockType from $source")
       result
     }
     wrapped

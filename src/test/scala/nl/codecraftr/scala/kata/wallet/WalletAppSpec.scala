@@ -1,5 +1,6 @@
 package nl.codecraftr.scala.kata.wallet
 
+import nl.codecraftr.scala.kata.wallet.utils.CachingProvider.withCaching
 import nl.codecraftr.scala.kata.wallet.utils.LoggingProvider.withLogging
 import nl.codecraftr.scala.kata.wallet.utils.TimingProvider.withTiming
 import org.scalatest.flatspec.AnyFlatSpec
@@ -24,7 +25,34 @@ class WalletAppSpec extends AnyFlatSpec with Matchers {
   it should "calculate total value of its stocks (API)" in {
     WalletApp.calculateTotalValue(
       wallet,
-      withTiming(withLogging("api")(ApiRateProvider.rateProvider))
+      withCaching(
+        withTiming(
+          withLogging("api")(ApiRateProvider.rateProvider)
+        )
+      )
+    ) should be > 0.0
+  }
+
+  it should "cache the api results" in {
+    val prodApiProvider = withLogging("api")(
+      withTiming(
+        withCaching(ApiRateProvider.rateProvider)
+      )
+    )
+
+    val petroleum = Wallet(
+      Stock(1, Petroleum)
+    )
+
+    WalletApp.calculateTotalValue(
+      petroleum,
+      prodApiProvider
+    )
+
+    // Calling again to demonstrate the cache
+    WalletApp.calculateTotalValue(
+      petroleum,
+      prodApiProvider
     ) should be > 0.0
   }
 }
