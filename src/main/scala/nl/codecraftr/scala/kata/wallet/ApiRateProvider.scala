@@ -10,6 +10,7 @@ object ApiRateProvider {
       case Petroleum => 3.99
       case Dollar    => 1.23
       case Gold      => 101.73
+      case _         => 1.0
     }
   }
 }

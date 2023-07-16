@@ -4,21 +4,21 @@ import nl.codecraftr.scala.kata.wallet.utils.LoggingProvider.withLogging
 
 object WalletApp extends App {
   private lazy val loggingApiRateProvider = withLogging("Api")(
-      ApiRateProvider.rateProvider
+    ApiRateProvider.rateProvider
   )
 
   def calculateTotalValue(
       wallet: Wallet,
       rateProvider: StockType => Double
   ): Double = {
-      val rates = calculateRates(wallet.stocks.keys.toSet, rateProvider)
-      Wallet.calculateTotalValue(wallet, rates)
+    val rates = calculateRates(wallet.stocks.keys.toSet, rateProvider)
+    Wallet.calculateTotalValue(wallet, rates)
   }
 
   private def calculateRates(
       stockTypes: Set[StockType],
       rateProvider: StockType => Double
   ) = stockTypes
-      .map(stockType => stockType -> rateProvider(stockType))
-      .toMap
+    .map(stockType => stockType -> rateProvider(stockType))
+    .toMap
 }

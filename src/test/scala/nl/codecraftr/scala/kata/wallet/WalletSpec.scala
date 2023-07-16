@@ -38,9 +38,5 @@ class WalletSpec extends AnyWordSpec with Matchers {
     "return 0 if the wallet is empty" in {
       Wallet.calculateTotalValue(Wallet(), rates) shouldBe 0.0
     }
-
-    // TODO test edge case
-    "what if the rate isn't found?" in {
-    }
   }
 }

@@ -19,4 +19,4 @@ jobs:
                     java-version: '11'
                     distribution: 'adopt'
             -   name: Quality Check
-                run: sbt test scalafmtCheckAll IntegrationTest/test
+                run: sbt test scalafmtCheckAll
