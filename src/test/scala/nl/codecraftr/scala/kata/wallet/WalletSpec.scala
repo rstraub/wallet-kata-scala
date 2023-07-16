@@ -1,4 +1,4 @@
-package nl.codecraftr.scala.kata
+package nl.codecraftr.scala.kata.wallet
 
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec

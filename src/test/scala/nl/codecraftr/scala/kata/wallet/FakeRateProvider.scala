@@ -1,4 +1,4 @@
-package nl.codecraftr.scala.kata
+package nl.codecraftr.scala.kata.wallet
 
 object FakeRateProvider {
   def rateProvider(stockType: StockType): Double = stockType match {

@@ -1,4 +1,4 @@
-package nl.codecraftr.scala.kata
+package nl.codecraftr.scala.kata.wallet
 
 /*
  * Higher order function to add logging to a rate provider

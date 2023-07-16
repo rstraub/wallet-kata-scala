@@ -1,4 +1,4 @@
-package nl.codecraftr.scala.kata
+package nl.codecraftr.scala.kata.wallet
 
 case class Wallet(stocks: Map[StockType, Int]) {}
 

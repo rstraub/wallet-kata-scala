@@ -1,6 +1,6 @@
-package nl.codecraftr.scala.kata
+package nl.codecraftr.scala.kata.wallet
 
-import nl.codecraftr.scala.kata.LoggingProvider.withLogging
+import LoggingProvider.withLogging
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
